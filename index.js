@@ -1,10 +1,15 @@
 const express = require("express");
-require("dotenv").config()
+require("dotenv").config();
+const cors = require("cors");
 const { User, Blog } = require("./database/index.js");
 const mongoose = require("mongoose");
 
 const app = express();
-
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -63,9 +68,7 @@ app.put("/api/blogs/:id", async (req, res) => {
     const blogId = req.params.id;
 
     if (!Object.keys(req.body).length) {
-      return res
-        .status(400)
-        .json({ error: "body is required" });
+      return res.status(400).json({ error: "body is required" });
     }
     const updatedBlog = await Blog.findByIdAndUpdate(blogId, req.body, {
       new: true,
