@@ -74,6 +74,6 @@ const generateData = async () => {
   }
 };
 
-generateData();
+// generateData();
 
 module.exports = { User, Blog };
