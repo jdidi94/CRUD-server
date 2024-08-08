@@ -20,6 +20,10 @@ app.post("/api/users", async (req, res) => {
     if (!name) {
       return res.status(400).json({ error: "Name is required" });
     }
+    const user = await User.findOne({ name: name });
+    if (user) {
+      return res.status(200).json(user);
+    }
     const newUser = new User({
       name,
     });
