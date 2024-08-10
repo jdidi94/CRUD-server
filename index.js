@@ -59,7 +59,7 @@ app.post("/api/blogs", async (req, res) => {
 // Get all blogs
 app.get("/api/blogs", async (req, res) => {
   try {
-    const blogs = await Blog.find().populate("author");
+    const blogs = await Blog.find().sort({ createdAt: -1 }).populate("author");
     res.status(200).json(blogs);
   } catch (error) {
     res.status(400).json({ error: error.message });
