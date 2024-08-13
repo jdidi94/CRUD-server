@@ -1,3 +1,5 @@
+const { mongoose, Schema } = require("mongoose");
+
 let todoSchema = mongoose.Schema(
   {
     imageUrl: String,
