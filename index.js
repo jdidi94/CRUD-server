@@ -112,7 +112,7 @@ app.post("/api/todo", async (req, res) => {
         .status(400)
         .json({ error: "imageUrl, name, and author are required" });
     }
-    const newTodo = new Todo({ imageUrl, name, description, complete, author });
+    const newTodo = new Todo({ imageUrl, name, description, author });
     const savedTodo = await newTodo.save();
     res.status(201).json(savedTodo);
   } catch (error) {
