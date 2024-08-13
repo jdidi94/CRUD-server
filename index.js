@@ -106,7 +106,7 @@ app.delete("/api/blogs/:id", async (req, res) => {
 // Create a new todo
 app.post("/api/todo", async (req, res) => {
   try {
-    const { imageUrl, name, description, complete, author } = req.body;
+    const { imageUrl, name, description, author } = req.body;
     if (!imageUrl || !name || !author) {
       return res
         .status(400)
